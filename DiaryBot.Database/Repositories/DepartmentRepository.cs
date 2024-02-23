@@ -8,22 +8,30 @@ namespace iaryBot.Database.Repositories
     {
         private ApplicationContext _context;
 
-        public DepartmentRepository()
+        public DepartmentRepository(ApplicationContext context)
         {
-            _context = ApplicationContext.Instance;
+            _context = context;
         }
 
-        public void Create(Department item)
+        public Department Create(Department item)
         {
             _context.Department.Add(item);
             _context.SaveChanges();
+
+            return item;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var obj = _context.Department.Find(id);
-            _context.Department.Remove(obj);
-            _context.SaveChanges();
+            if(obj != null)
+            {
+                _context.Department.Remove(obj);
+                _context.SaveChanges();
+
+                return true;
+            }
+            else return false;
         }
 
         public Department Get(int id)
@@ -35,7 +43,7 @@ namespace iaryBot.Database.Repositories
 
         public List<Department> GetList() => _context.Department.ToList();
 
-        public void Update(Department item)
+        public Department Update(Department item)
         {
             var obj = _context.Department.Find(item.Id);
 
@@ -43,6 +51,8 @@ namespace iaryBot.Database.Repositories
 
             _context.Department.Update(obj);
             _context.SaveChanges();
+
+            return obj;
         }
     }
 }

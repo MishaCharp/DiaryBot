@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiaryBot", "DiaryBot\DiaryBot.csproj", "{9C843D82-01BA-490C-B13E-3DCC4D0362A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiaryBot", "DiaryBot\DiaryBot.csproj", "{9C843D82-01BA-490C-B13E-3DCC4D0362A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiaryBot.Database", "DiaryBot.Database\DiaryBot.Database.csproj", "{DC46CE46-5C88-48BB-994B-861C94B9339E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiaryBot.Database", "DiaryBot.Database\DiaryBot.Database.csproj", "{DC46CE46-5C88-48BB-994B-861C94B9339E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiaryServer", "DiaryServer\DiaryServer.csproj", "{B2F589D5-AAF9-454E-B0D2-D03E8C8C35F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DC46CE46-5C88-48BB-994B-861C94B9339E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC46CE46-5C88-48BB-994B-861C94B9339E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC46CE46-5C88-48BB-994B-861C94B9339E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2F589D5-AAF9-454E-B0D2-D03E8C8C35F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2F589D5-AAF9-454E-B0D2-D03E8C8C35F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2F589D5-AAF9-454E-B0D2-D03E8C8C35F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2F589D5-AAF9-454E-B0D2-D03E8C8C35F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

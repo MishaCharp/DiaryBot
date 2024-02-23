@@ -8,22 +8,30 @@ namespace iaryBot.Database.Repositories
     {
         private ApplicationContext _context;
 
-        public LessonRepository()
+        public LessonRepository(ApplicationContext context)
         {
-            _context = ApplicationContext.Instance;
+            _context = context;
         }
 
-        public void Create(Lesson item)
+        public Lesson Create(Lesson item)
         {
             _context.Lesson.Add(item);
             _context.SaveChanges();
+
+            return item;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var obj = _context.Lesson.Find(id);
-            _context.Lesson.Remove(obj);
-            _context.SaveChanges();
+            if (obj != null)
+            {
+                _context.Lesson.Remove(obj);
+                _context.SaveChanges();
+
+                return true;
+            }
+            else return false;
         }
 
         public Lesson Get(int id)
@@ -35,7 +43,7 @@ namespace iaryBot.Database.Repositories
 
         public List<Lesson> GetList() => _context.Lesson.ToList();
 
-        public void Update(Lesson item)
+        public Lesson Update(Lesson item)
         {
             var obj = _context.Lesson.Find(item.Id);
 
@@ -43,6 +51,8 @@ namespace iaryBot.Database.Repositories
 
             _context.Lesson.Update(obj);
             _context.SaveChanges();
+
+            return obj;
         }
     }
 }

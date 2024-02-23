@@ -8,22 +8,29 @@ namespace iaryBot.Database.Repositories
     {
         private ApplicationContext _context;
 
-        public SubjectRepository()
+        public SubjectRepository(ApplicationContext context)
         {
-            _context = ApplicationContext.Instance;
+            _context = context;
         }
 
-        public void Create(Subject item)
+        public Subject Create(Subject item)
         {
             _context.Subject.Add(item);
             _context.SaveChanges();
+
+            return item;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var obj = _context.Subject.Find(id);
-            _context.Subject.Remove(obj);
-            _context.SaveChanges();
+            if (obj != null)
+            {
+                _context.Subject.Remove(obj);
+                _context.SaveChanges();
+                return true;
+            }
+            else return false;
         }
 
         public Subject Get(int id)
@@ -35,7 +42,7 @@ namespace iaryBot.Database.Repositories
 
         public List<Subject> GetList() => _context.Subject.ToList();
 
-        public void Update(Subject item)
+        public Subject Update(Subject item)
         {
             var obj = _context.Subject.Find(item.Id);
 
@@ -43,6 +50,8 @@ namespace iaryBot.Database.Repositories
 
             _context.Subject.Update(obj);
             _context.SaveChanges();
+
+            return obj;
         }
     }
 }

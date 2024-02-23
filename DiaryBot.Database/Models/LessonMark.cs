@@ -11,5 +11,6 @@ namespace DiaryBot.Database.Models
         public int Id { get; set; }
         public Lesson Lesson { get; set; }
         public Mark Mark { get; set; }
+        public Student Student { get; set; }
     }
 }

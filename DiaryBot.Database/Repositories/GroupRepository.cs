@@ -8,22 +8,29 @@ namespace iaryBot.Database.Repositories
     {
         private ApplicationContext _context;
 
-        public GroupRepository()
+        public GroupRepository(ApplicationContext context)
         {
-            _context = ApplicationContext.Instance;
+            _context = context;
         }
 
-        public void Create(Group item)
+        public Group Create(Group item)
         {
             _context.Group.Add(item);
             _context.SaveChanges();
+
+            return item;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var obj = _context.Group.Find(id);
-            _context.Group.Remove(obj);
-            _context.SaveChanges();
+            if (obj != null)
+            {
+                _context.Group.Remove(obj);
+                _context.SaveChanges();
+                return true;
+            }
+            else return false;
         }
 
         public Group Get(int id)
@@ -35,7 +42,7 @@ namespace iaryBot.Database.Repositories
 
         public List<Group> GetList() => _context.Group.ToList();
 
-        public void Update(Group item)
+        public Group Update(Group item)
         {
             var obj = _context.Group.Find(item.Id);
 
@@ -43,6 +50,8 @@ namespace iaryBot.Database.Repositories
 
             _context.Group.Update(obj);
             _context.SaveChanges();
+
+            return obj;
         }
     }
 }

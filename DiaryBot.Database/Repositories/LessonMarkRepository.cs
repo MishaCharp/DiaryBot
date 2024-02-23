@@ -8,22 +8,29 @@ namespace iaryBot.Database.Repositories
     {
         private ApplicationContext _context;
 
-        public LessonMarkRepository()
+        public LessonMarkRepository(ApplicationContext context)
         {
-            _context = ApplicationContext.Instance;
+            _context = context;
         }
 
-        public void Create(LessonMark item)
+        public LessonMark Create(LessonMark item)
         {
             _context.LessonMark.Add(item);
             _context.SaveChanges();
+
+            return item;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var obj = _context.LessonMark.Find(id);
-            _context.LessonMark.Remove(obj);
-            _context.SaveChanges();
+            if(obj != null) 
+            {
+                _context.LessonMark.Remove(obj);
+                _context.SaveChanges();
+                return true;
+            }
+            else return false;
         }
 
         public LessonMark Get(int id)
@@ -35,7 +42,7 @@ namespace iaryBot.Database.Repositories
 
         public List<LessonMark> GetList() => _context.LessonMark.ToList();
 
-        public void Update(LessonMark item)
+        public LessonMark Update(LessonMark item)
         {
             var obj = _context.LessonMark.Find(item.Id);
 
@@ -44,6 +51,8 @@ namespace iaryBot.Database.Repositories
 
             _context.LessonMark.Update(obj);
             _context.SaveChanges();
+
+            return obj;
         }
     }
 }

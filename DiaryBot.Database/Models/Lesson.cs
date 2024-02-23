@@ -13,7 +13,8 @@ namespace DiaryBot.Database.Models
 
         [Column(TypeName = "date")]
         public DateTime Date { get; set; }
-
+        public Subject Subject { get; set; }
+        public Group Group { get; set; }
 
         public List<LessonMark> LessonMarks { get; set; }
     }

@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace DiaryBot.Database.Models
 {
-    public class Subject
+    public class Role
     {
         public int Id { get; set; }
-        public string SubjectName { get; set; }
+        public string RoleName { get; set; }
 
-        public List<GroupSubject> GroupSubjects { get; set; }
-        public List<Lesson> Lessons { get; set; }
+        public List<User> Users { get; set; }
     }
 }

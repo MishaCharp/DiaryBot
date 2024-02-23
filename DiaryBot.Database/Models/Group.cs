@@ -10,11 +10,11 @@ namespace DiaryBot.Database.Models
     {
         public int Id { get; set; }
         public string GroupName { get; set; }
-
         public Department Department { get; set; }
 
 
-        public List<User> Users { get; set; }
+        public List<Student> Students { get; set; }
+        public List<Lesson> Lessons { get; set; }
         public List<GroupSubject> GroupSubjects { get; set; }
     }
 }

@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace DiaryBot.Database.Models
 {
-    public class User
+    public class VKUser
     {
         public int Id { get; set; }
-        public string Surname { get; set; }
-        public string Name { get; set; }
-        public string Patronymic { get; set; }
-
         public string Login { get; set; }
         public string Password { get; set; }
 
-        public Role Role { get; set; }
+        public long VKID { get; set; }
+
+        public Student Student { get; set; }
     }
 }
- 
